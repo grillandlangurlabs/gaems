@@ -1,42 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+<let currentStoryIndex = 0;
+
+const story = [
+    {
+        text: "You wake up in a mysterious forest. What do you do?",
+        choices: [
+            { text: "Explore the forest", nextIndex: 1 },
+            { text: "Stay where you are", nextIndex: 2 }
+        ]
+    },
+    {
+        text: "As you explore the forest, you encounter a strange creature. What do you do?",
+        choices: [
+            { text: "Approach the creature", nextIndex: 3 },
+            { text: "Run away", nextIndex: 4 }
+        ]
+    },
+    {
+        text: "You decide to stay where you are and wait for help. After some time, you hear voices approaching. It seems like help is on the way!",
+        choices: [
+            { text: "Continue waiting", nextIndex: 5 }
+        ]
+    },
+    // Add more story segments as needed
+];
+
+function displayStory(index) {
+    const currentStory = story[index];
+    const storyTextElement = document.getElementById('story-text');
+    storyTextElement.textContent = currentStory.text;
+
+    const choicesContainer = document.getElementById('choices');
+    choicesContainer.innerHTML = ''; // Clear previous choices
+
+    currentStory.choices.forEach((choice, idx) => {
+        const button = document.createElement('button');
+        button.textContent = choice.text;
+        button.onclick = function() {
+            makeChoice(choice.nextIndex);
+        };
+        choicesContainer.appendChild(button);
+    });
+}
+
+function makeChoice(choiceIndex) {
+    currentStoryIndex = choiceIndex;
+    displayStory(choiceIndex);
+}
+
+// Start the game
+displayStory(currentStoryIndex);
+>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game</title>
+    <#game-container {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#story-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#choices button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+>
+        /* CSS styles go here */
+        /* Define your styles for different elements */
+    </style>
+</head>
+<<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Game</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to external CSS file -->
+    <title>Text Adventure Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<<div id="game-container">
-    <canvas id="game-canvas" width="800" height="600"></canvas>
-    <button id="start-button">Start Game</button>
-    <p id="score">Score: <span id="score-value">0</span></p>
-</div>
+<body>
+
+    <!-- HTML content goes here -->
+
+    <script src="script.js"></script>
+    <script>
+        // JavaScript code goes here
+        // This is where you can define your JavaScript functions and variables
+    </script>
+</body>
+</html>
 >
 
-    <!-- Your game content will go here -->
+    <!-- HTML content goes here -->
 
-    <script src="script.js"></script> <!-- // Example JavaScript for a simple game
-const canvas = document.getElementById('game-canvas');
-const ctx = canvas.getContext('2d');
-let score = 0;
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(50, 50, 100, 100);
-}
-
-function updateScore() {
-    document.getElementById('score-value').textContent = score;
-}
-
-document.getElementById('start-button').addEventListener('click', function() {
-    setInterval(function() {
-        draw();
-        score++;
-        updateScore();
-    }, 1000);
-});
--->
+    <script src="script.js"></script>
 </body>
 </html>
