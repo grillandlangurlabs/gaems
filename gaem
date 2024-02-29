@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to external CSS file -->
+</head>
+<<div id="game-container">
+    <canvas id="game-canvas" width="800" height="600"></canvas>
+    <button id="start-button">Start Game</button>
+    <p id="score">Score: <span id="score-value">0</span></p>
+</div>
+>
+
+    <!-- Your game content will go here -->
+
+    <script src="script.js"></script> <!-- // Example JavaScript for a simple game
+const canvas = document.getElementById('game-canvas');
+const ctx = canvas.getContext('2d');
+let score = 0;
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(50, 50, 100, 100);
+}
+
+function updateScore() {
+    document.getElementById('score-value').textContent = score;
+}
+
+document.getElementById('start-button').addEventListener('click', function() {
+    setInterval(function() {
+        draw();
+        score++;
+        updateScore();
+    }, 1000);
+});
+-->
+</body>
+</html>
